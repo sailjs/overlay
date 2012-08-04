@@ -5,10 +5,11 @@ function(View, clazz) {
   function Overlay(el, options) {
     Overlay.super_.call(this, el, options);
     options = options || {};
+    this.closable = options.closable;
     this._autoRemove = options.autoRemove !== undefined ? options.autoRemove : true;
     
     var self = this;
-    if (options.closable) {
+    if (this.closable) {
       this.el.on('click', function() {
         self.hide();
         return false;
