@@ -3,30 +3,23 @@ define(['view',
 function(View, clazz) {
   
   function Overlay(el, options) {
+    Overlay.super_.call(this, el, options);
     options = options || {};
-    
-    Overlay.super_.call(this, el);
     this._autoRemove = options.autoRemove !== undefined ? options.autoRemove : true;
-    this._init(options);
-  }
-  clazz.inherits(Overlay, View);
-  
-  Overlay.prototype._init = function(options) {
-    var el = this.el
-      , self = this;
-      
-    // TODO: Only append elements if they are not already present
-    el.appendTo(document.body);
+    
+    var self = this;
     if (options.closable) {
-      el.on('click', function() {
+      this.el.on('click', function() {
         self.hide();
         return false;
       });
     }
   }
+  clazz.inherits(Overlay, View);
   
   Overlay.prototype.show = function() {
     this.emit('show');
+    this.el.appendTo(document.body);
     this.el.removeClass('hide');
     return this;
   }
@@ -37,9 +30,14 @@ function(View, clazz) {
     this.el.addClass('hide');
     if (this._autoRemove) {
       setTimeout(function() {
-        self.el.remove();
-      }, 2000);
+        self.remove();
+      }, 10);
     }
+    return this;
+  }
+  
+  Overlay.prototype.remove = function() {
+    this.el.remove();
     return this;
   }
   
