@@ -23,9 +23,10 @@
   "main": "overlay",
   "amd": {},
   "volo": {
+    "baseUrl": "vendor",
     "dependencies": {
-      "class": "github:anchorjs/class",
-      "view": "github:sailjs/view"
+      "class": "github:anchorjs/class/master",
+      "view": "github:sailjs/view/master"
     }
   }
 }
