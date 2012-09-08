@@ -3,8 +3,8 @@ define(['view',
 function(View, clazz) {
   
   function Overlay(el, options) {
-    Overlay.super_.call(this, el, options);
     options = options || {};
+    Overlay.super_.call(this, el, options);
     this.closable = options.closable;
     this._autoRemove = options.autoRemove !== undefined ? options.autoRemove : true;
     
@@ -26,10 +26,10 @@ function(View, clazz) {
   }
   
   Overlay.prototype.hide = function() {
-    var self = this;
     this.emit('hide');
     this.el.addClass('hide');
     if (this._autoRemove) {
+      var self = this;
       setTimeout(function() {
         self.remove();
       }, 10);
