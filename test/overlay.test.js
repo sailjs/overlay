@@ -1,7 +1,5 @@
-define(['overlay/overlay',
-        'chai'],
-function(Overlay, chai) {
-  var expect = chai.expect;
+define(['overlay'],
+function(Overlay) {
 
   describe("overlay", function() {
     
