@@ -32,13 +32,9 @@ function(View, clazz) {
       var self = this;
       setTimeout(function() {
         self.remove();
+        self.dispose();
       }, 10);
     }
-    return this;
-  }
-  
-  Overlay.prototype.remove = function() {
-    this.el.remove();
     return this;
   }
   
